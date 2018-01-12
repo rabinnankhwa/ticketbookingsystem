@@ -1,0 +1,19 @@
+<p>
+  movie works!
+</p>
+
+
+movies list
+
+<li *ngFor="let movie of movies">
+
+
+  Movie name {{ movie.name }} Starring
+
+  <div *ngFor="let star of movie.starring">
+    name: {{ star.name }} role :{{ star.role }}
+
+  </div>
+
+
+</li>
