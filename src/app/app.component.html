@@ -1,7 +1,26 @@
+ Welcome to app.. Render form app.coponent.
 
-Welcome to app..
-<li>
-    <a href="/home">Home</a>
-    <a href="/movie">Movie</a>
-</li>
+
+
+
+
+<mat-toolbar color="primary">
+    <li>
+        <a [routerLink]="['/home']">Home</a>
+        <a [routerLink]="[ '/movie-list']">Movie</a>
+    </li>
+
+    <span class="example-spacer"></span>
+
+    <mat-icon class="example-icon">verified_user</mat-icon>
+</mat-toolbar>
+
+
+
+
+<button mat-raised-button>text</button>
+
+
+
+
 <router-outlet></router-outlet>

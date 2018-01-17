@@ -1,19 +1,39 @@
-<p>
-  movie works!
-</p>
+<form class="example-form">
+
+	<pre>
+		{{ movie | json }}
+	</pre>
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Title" [(ngModel)]="movie.title" name="movie">
+	</mat-form-field>
+
+	<mat-form-field class="full-width">
+		<input matInput placeholder="ReleaseDate" [(ngModel)]="movie.releaseDate" name="releaseDate">
+	</mat-form-field>
+
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Language" [(ngModel)]="movie.language" name="language">
+	</mat-form-field>
 
 
-movies list
-
-<li *ngFor="let movie of movies">
 
 
-  Movie name {{ movie.name }} Starring
+	<button mat-raised-button (click)="submit()">Submit</button>
 
-  <div *ngFor="let star of movie.starring">
-    name: {{ star.name }} role :{{ star.role }}
-
-  </div>
+</form>
 
 
-</li>
+<mat-list>
+	<mat-list-item *ngFor="let movie of movies; let i=index">
+		
+		<h3 matLine> {{movie.title}} </h3>
+		<p matLine>
+			<span> {{movie.releaseDate}} </span>
+			<span class="demo-2"> {{movie.language}} </span>
+
+		</p>
+		<p matLine>
+			<button mat-raised-button (click)="remove(i)">Remove</button>
+		</p>
+	</mat-list-item>
+</mat-list>

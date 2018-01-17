@@ -5,33 +5,12 @@ export class MovieService {
 
 	constructor() { }
 
-	movies = [
-		{
-			name: 'Kalo Pothi',
-			starring: [
-				{
-					name: 'Min Bahadur Bham',
-					role: 'Director',
-				}, {
-					name: 'Sunil Chaudhary ',
-					role: 'Lead Actor'
-				}
-			]
-		}, {
-			name: 'Rato Bhale',
-			starring: [
-				{
-					name: 'Samin',
-					role: 'Singer'
-				}, {
-					name: 'sonu',
-					role: 'Director'
-				}
-			]
-		}];
+	addMovie(){
 
-	public getMovies() {
-		return this.movies;
+	}
+
+	getMovies(){
+
 	}
 
 }

@@ -9,15 +9,39 @@ import { MovieService } from './../service/movie.service';
 export class MovieComponent implements OnInit {
 
 
-	movies: any;
+	public movie = {
+		title: '',
+		releaseDate: '',
+		language: '',
+	};
+
+	public movies: any = [];
+
 
 	constructor(
 		public movieService: MovieService
 	) { }
 
 	ngOnInit() {
-		this.movies = this.movieService.getMovies();
+
 	}
 
-	
+	submit() {
+
+		this.movies.push(this.movie);
+
+		this.movie = {
+			title: '',
+			releaseDate: '',
+			language: '',
+		};
+	}
+
+	remove(i) {
+		this.movies.splice(i, 1);
+	}
+
+
+
+
 }
