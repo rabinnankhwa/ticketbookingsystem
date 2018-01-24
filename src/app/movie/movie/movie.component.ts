@@ -34,6 +34,9 @@ export class MovieComponent implements OnInit {
 				console.log(e);
 			})
 
+
+		console.log('waiting for callback..');
+
 	}
 
 	remove(i) {

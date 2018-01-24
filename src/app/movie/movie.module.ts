@@ -20,10 +20,7 @@ import { MaterialModule } from './../shared/material.module';
 	],
 	declarations: [
 		MovieComponent
-	],
-	exports: [
-		MovieComponent
-	],
+	],	
 	providers: [
 		MovieService
 	]
