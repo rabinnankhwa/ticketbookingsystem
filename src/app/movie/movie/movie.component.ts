@@ -10,6 +10,7 @@ export class MovieComponent implements OnInit {
 
 
 	public movie = {
+		_id: '',
 		title: '',
 		releaseDate: '',
 		language: '',
@@ -23,24 +24,67 @@ export class MovieComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-
+		this.getMovies();
 	}
 
-	submit() {
-		this.movieService.create(this.movie)
-			.subscribe(movie => {
-				this.movies.push(movie);
+	getMovies() {
+		this.movieService.list()
+			.subscribe(movies => {
+				this.movies = movies;
 			}, e => {
 				console.log(e);
 			})
+	}
 
+	submit() {
 
-		console.log('waiting for callback..');
+		if (this.movie._id) {
+			this.updateMovie();
+		} else {
+			this.createMovie();
+		}
 
 	}
 
-	remove(i) {
-		this.movies.splice(i, 1);
+	createMovie() {
+		this.movieService.create(this.movie)
+			.subscribe(movie => {
+				this.movies.push(movie);
+				this.resetForm()
+			}, e => {
+				console.log(e);
+			});
+	}
+
+	resetForm() {
+		this.movie = {
+			_id: '',
+			title: '',
+			releaseDate: '',
+			language: '',
+		};
+	}
+
+	remove(id: string, i) {
+		this.movieService.remove(id)
+			.subscribe(movie => {
+				this.movies.splice(i, 1);
+			}, e => {
+				console.log(e);
+			})
+	}
+
+	update(movie: any) {
+		this.movie = movie;
+	}
+
+	updateMovie() {
+		this.movieService.update(this.movie)
+			.subscribe(movie => {
+				this.resetForm();
+			}, e => {
+				console.log(e);
+			})
 	}
 
 
