@@ -17,18 +17,40 @@ export class MovieService {
 		public http: Http
 	) { }
 
+	/**
+	 * Create movie
+	 * @param movie 
+	 */
 	create(movie: any): Observable<any> {
-
-		const headers = new Headers({ 'Content-Type': 'application/json' });
-		const options = new RequestOptions({ headers: headers });
-
 		let body = JSON.stringify(movie);
-
-		
-
-		return this.http.post(this.url, body, options)
+		return this.http.post(this.url, body, this.getOptions())
 			.map(this.extractData)
 			.catch(this.handleError)
+	}
+
+	/**
+	 *Get list of movies.
+	 */
+	list(): Observable<any> {
+		return this.http.get(this.url, this.getOptions())
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	/**
+	 * Remove movie item.
+	 */
+	remove(id: string): Observable<any> {
+		return this.http.delete(this.url + '/' + id, this.getOptions())
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	update(movie: any): Observable<any> {
+		let body = JSON.stringify(movie);
+		return this.http.put(this.url + '/' + movie._id, body, this.getOptions())
+			.map(this.extractData)
+			.catch(this.handleError);
 	}
 
 	handleError(error: any) {
@@ -40,4 +62,10 @@ export class MovieService {
 		return body || {};
 	}
 
-}
+	getOptions() {
+		const headers = new Headers({ 'Content-Type': 'application/json' });
+		const options = new RequestOptions({ headers: headers });
+		return options;
+	}
+
+} 

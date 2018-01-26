@@ -15,25 +15,37 @@
 		<input matInput placeholder="Language" [(ngModel)]="movie.language" name="language">
 	</mat-form-field>
 
-
-
-
 	<button mat-raised-button (click)="submit()">Submit</button>
-
 </form>
 
+<mat-card>
 
-<mat-list>
-	<mat-list-item  *ngFor="let movie of movies; let i=index">
-		
-		<h3 matLine> {{movie.title}} </h3>
-		<p matLine>
-			<span> {{movie.releaseDate}} </span>
-			<span class="demo-2"> {{movie.language}} </span>
+	<mat-card-title>Movies List</mat-card-title>
 
-		</p>
-		<p matLine>
-			<button mat-raised-button (click)="remove(i)">Remove</button>
-		</p>
-	</mat-list-item>
-</mat-list>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item *ngFor="let movie of movies; let i=index">
+
+				<h3 matLine> {{movie.title}}
+
+					<mat-menu #appMenu="matMenu">
+						<button mat-menu-item (click)="update(movie)"> Update </button>
+						<button mat-menu-item (click)="remove(movie._id,i)"> Remove </button>
+					</mat-menu>
+
+					<button mat-icon-button [matMenuTriggerFor]="appMenu">
+						<mat-icon>more_vert</mat-icon>
+					</button>
+
+				</h3>
+
+				<p matLine>
+					<span> {{movie.releaseDate}} </span>
+					<span class="demo-2"> {{movie.language}} </span>
+				</p>
+
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+
+</mat-card>
