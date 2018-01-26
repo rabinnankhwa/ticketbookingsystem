@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+
 
 import { MovieComponent } from './movie/movie.component';
 import { MovieService } from './service/movie.service';
@@ -13,14 +15,12 @@ import { MaterialModule } from './../shared/material.module';
 		CommonModule,
 		MaterialModule,
 		FormsModule,
-		MovieRoutingModule
+		MovieRoutingModule,
+		HttpModule
 	],
 	declarations: [
 		MovieComponent
-	],
-	exports: [
-		MovieComponent
-	],
+	],	
 	providers: [
 		MovieService
 	]

@@ -27,14 +27,16 @@ export class MovieComponent implements OnInit {
 	}
 
 	submit() {
+		this.movieService.create(this.movie)
+			.subscribe(movie => {
+				this.movies.push(movie);
+			}, e => {
+				console.log(e);
+			})
 
-		this.movies.push(this.movie);
 
-		this.movie = {
-			title: '',
-			releaseDate: '',
-			language: '',
-		};
+		console.log('waiting for callback..');
+
 	}
 
 	remove(i) {
