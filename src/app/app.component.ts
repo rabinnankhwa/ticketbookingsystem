@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'app';
-	options: FormGroup;
-	
-	  constructor(fb: FormBuilder) {
-		this.options = fb.group({
-		  'fixed': false,
-		  'top': 0,
-		  'bottom': 0,
-		});
-	  }
 
-	  
+
+
+	constructor(
+		public router: Router
+	) {
+
+	}
+
+	login() {
+		this.router.navigate(['login']);
+	}
+
+
+	register() {
+		this.router.navigate(['register']);
+	}
 }

@@ -7,8 +7,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { MovieModule } from './movie/movie.module';
+import { AuthModule } from './auth/auth.module';
+
 import { AppRoutingModule } from './app.route.module';
 import { MaterialModule } from './shared/material.module';
+
+import { BaseService } from './shared/base.service';
+
 
 @NgModule({
 	declarations: [
@@ -20,12 +25,15 @@ import { MaterialModule } from './shared/material.module';
 		MaterialModule,
 		MovieModule,
 		BrowserAnimationsModule,
+		AuthModule,
 		AppRoutingModule,
 		FormsModule,
 		ReactiveFormsModule
 		
 	],
-	providers: [],
+	providers: [
+		BaseService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

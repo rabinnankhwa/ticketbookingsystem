@@ -82,6 +82,7 @@ export class MovieComponent implements OnInit {
 		this.movieService.update(this.movie)
 			.subscribe(movie => {
 				this.resetForm();
+				this.getMovies();
 			}, e => {
 				console.log(e);
 			})
