@@ -28,8 +28,18 @@ export class BaseService {
 
     getOptions() {
         const headers = new Headers({ 'Content-Type': 'application/json' });
+
+        headers.append('Authorization', 'Bearer ' + this.getToken());
+
         const options = new RequestOptions({ headers: headers });
+
         return options;
     }
+
+    getToken() {
+        return localStorage.getItem('token');
+    }
+
+
 
 } 

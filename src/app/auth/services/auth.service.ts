@@ -45,5 +45,28 @@ export class AuthService {
 			.catch(this.baseService.handleError)
 	}
 
+	/**	Set user and token to localstorage */
+	setUser(data: any) {
+		let user = JSON.stringify(data.user);
+		localStorage.setItem('user', user);
+		localStorage.setItem('token', data.token);
+	}
 
+
+	getUser() {
+		return JSON.parse(localStorage.getItem('user'));
+	}
+
+	logout() {
+		localStorage.clear();
+	}
+
+	isLoggedIn() {
+		
+		if (localStorage.getItem('token')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 } 

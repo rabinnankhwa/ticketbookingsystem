@@ -7,14 +7,14 @@
     <span>CinemaBook</span>
     <span class="example-spacer"></span>
 
-   
+    <div *ngIf="authService.isLoggedIn">
+        {{ currentUser.name }}
+    </div>
+    <div *ngIf="!authService.isLoggedIn">
+        <button mat-button (click)="login()">Login</button>
 
- 
-
-
-    <button mat-button (click)="login()">Login</button>
-
-    <button mat-button (click)="register()">Register</button>
+        <button mat-button (click)="register()">Register</button>
+    </div>
 
 </mat-toolbar>
 
