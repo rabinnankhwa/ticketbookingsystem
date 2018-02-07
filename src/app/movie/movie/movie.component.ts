@@ -103,5 +103,5 @@ export class MovieComponent implements OnInit {
 			}, e => {
 				console.log(e);
 			})
-	
+	}
 }

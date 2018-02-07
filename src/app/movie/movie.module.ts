@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MovieComponent } from './movie/movie.component';
 import { MovieService } from './service/movie.service';
@@ -18,7 +18,8 @@ import { MaterialModule } from './../shared/material.module';
 		FormsModule,
 		MovieRoutingModule,
 		HttpModule,
-		FileUploadModule
+		FileUploadModule,
+		FlexLayoutModule
 	],
 	declarations: [
 		MovieComponent
