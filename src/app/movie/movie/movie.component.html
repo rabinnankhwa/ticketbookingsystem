@@ -1,51 +1,69 @@
-<form class="example-form">
+<div fxLayout="row" fxLayoutAlign="space-around center">
+	<mat-card fxFlex="70">
+		<mat-card-title>Create Movies</mat-card-title>
 
-	<pre>
-		{{ movie | json }}
-	</pre>
-	<mat-form-field class="full-width">
-		<input matInput placeholder="Title" [(ngModel)]="movie.title" name="movie">
-	</mat-form-field>
+		<mat-card-content>
+			<form class="example-form">
 
-	<mat-form-field class="full-width">
-		<input matInput placeholder="ReleaseDate" [(ngModel)]="movie.releaseDate" name="releaseDate">
-	</mat-form-field>
+				<mat-form-field class="full-width">
+					<input matInput placeholder="Title" [(ngModel)]="movie.title" name="movie">
+				</mat-form-field>
 
-	<mat-form-field class="full-width">
-		<input matInput placeholder="Language" [(ngModel)]="movie.language" name="language">
-	</mat-form-field>
+				<mat-form-field class="full-width">
+					<input matInput placeholder="ReleaseDate" [(ngModel)]="movie.releaseDate" name="releaseDate">
+				</mat-form-field>
 
-	<button mat-raised-button (click)="submit()">Submit</button>
-</form>
+				<mat-form-field class="full-width">
+					<input matInput placeholder="Language" [(ngModel)]="movie.language" name="language">
+				</mat-form-field>
 
-<mat-card>
+				<input type="file" ng2FileSelect [uploader]="uploader" />
 
-	<mat-card-title>Movies List</mat-card-title>
+				<div *ngFor="let item of uploader.queue">
+					<button type="button" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+					<button type="button" (click)="item.remove()">Remove</button>
+				</div>
 
-	<mat-card-content>
-		<mat-list>
-			<mat-list-item *ngFor="let movie of movies; let i=index">
+			</form>
+		</mat-card-content>
+		<mat-card-actions>
+			<button color="primary" mat-raised-button (click)="submit()">Submit</button>
+			<button color="accent" mat-raised-button (click)="resetForm()">Reset</button>
+		</mat-card-actions>
+	</mat-card>
+</div>
 
-				<h3 matLine> {{movie.title}}
+<div fxLayout="row" fxLayoutAlign="space-around center">
 
-					<mat-menu #appMenu="matMenu">
-						<button mat-menu-item (click)="update(movie)"> Update </button>
-						<button mat-menu-item (click)="remove(movie._id,i)"> Remove </button>
-					</mat-menu>
+	<mat-card fxFlex="70">
 
-					<button mat-icon-button [matMenuTriggerFor]="appMenu">
-						<mat-icon>more_vert</mat-icon>
-					</button>
+		<mat-card-title>Movies List</mat-card-title>
 
-				</h3>
+		<mat-card-content>
+			<mat-list>
+				<mat-list-item *ngFor="let movie of movies; let i=index">
 
-				<p matLine>
-					<span> {{movie.releaseDate}} </span>
-					<span class="demo-2"> {{movie.language}} </span>
-				</p>
+					<h3 matLine> {{movie.title}}
 
-			</mat-list-item>
-		</mat-list>
-	</mat-card-content>
+						<mat-menu #appMenu="matMenu">
+							<button mat-menu-item (click)="update(movie)"> Update </button>
+							<button mat-menu-item (click)="remove(movie._id,i)"> Remove </button>
+						</mat-menu>
 
-</mat-card>
+						<button mat-icon-button [matMenuTriggerFor]="appMenu">
+							<mat-icon>more_vert</mat-icon>
+						</button>
+
+					</h3>
+
+					<p matLine>
+						<span> {{movie.releaseDate}} </span>
+						<span class="demo-2"> {{movie.language}} </span>
+					</p>
+
+				</mat-list-item>
+			</mat-list>
+		</mat-card-content>
+
+	</mat-card>
+</div>

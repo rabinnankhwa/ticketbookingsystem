@@ -9,6 +9,24 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 
+export class Movie {
+	_id: string;
+	title: string;
+	releaseDate: string;
+	language: string;
+	poster: string;
+
+	constructor(options: any) {
+		this._id = options._id || '';
+		this.title = options.title || '';
+		this.releaseDate = options.releaseDate || '';
+		this.language = options.language || '';
+		this.poster = options.poster || '';
+	}
+
+};
+
+
 @Injectable()
 export class MovieService {
 

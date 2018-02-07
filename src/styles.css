@@ -9,3 +9,7 @@ body{
 mat-card{
     margin:10px;
 }
+
+.full-width{
+    width: 100%;
+}

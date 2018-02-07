@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthRouteModule } from './auth.route.module';
 import { MaterialModule } from './../shared/material.module';
@@ -15,7 +16,8 @@ import { AuthService } from './services/auth.service';
 		CommonModule,
 		AuthRouteModule,
 		FormsModule,
-		MaterialModule
+		MaterialModule,
+		FlexLayoutModule
 	],
 	declarations: [
 		LoginComponent,

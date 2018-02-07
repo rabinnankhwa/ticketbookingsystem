@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from './../service/movie.service';
+import { MovieService, Movie } from './../service/movie.service';
 
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from './../../../environments/environment';
 @Component({
 	selector: 'app-movie',
 	templateUrl: './movie.component.html',
@@ -9,15 +11,13 @@ import { MovieService } from './../service/movie.service';
 export class MovieComponent implements OnInit {
 
 
-	public movie = {
-		_id: '',
-		title: '',
-		releaseDate: '',
-		language: '',
-	};
+	public uploader: FileUploader = new FileUploader({ url: environment.baseUrl + 'file-upload' });
 
+
+	public movie: Movie = new Movie({});
 	public movies: any = [];
 
+	uploading: boolean = false;
 
 	constructor(
 		public movieService: MovieService
@@ -25,6 +25,28 @@ export class MovieComponent implements OnInit {
 
 	ngOnInit() {
 		this.getMovies();
+
+		this.uploader.onErrorItem = (item: any, response: string, status: number, headers): any => {
+			// this.notifyService.showFileUploadError(response);
+		}
+
+		this.uploader.onProgressItem = (file) => {
+			this.uploading = true;
+		};
+
+		this.uploader.onAfterAddingFile = (file) => {
+			if (this.uploader.queue.length > 1) {
+				this.uploader.queue.splice(0, 1);
+			}
+			file.withCredentials = false;
+		};
+
+		this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any) => {
+			let res = JSON.parse(response);
+			this.movie.poster = res.path;
+			console.log("ImageUpload:uploaded:", item, status, response);
+
+		};
 	}
 
 	getMovies() {
@@ -57,12 +79,7 @@ export class MovieComponent implements OnInit {
 	}
 
 	resetForm() {
-		this.movie = {
-			_id: '',
-			title: '',
-			releaseDate: '',
-			language: '',
-		};
+		this.movie = new Movie({});
 	}
 
 	remove(id: string, i) {
@@ -87,8 +104,4 @@ export class MovieComponent implements OnInit {
 				console.log(e);
 			})
 	}
-
-
-
-
 }
