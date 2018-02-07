@@ -15,6 +15,13 @@
 		<input matInput placeholder="Language" [(ngModel)]="movie.language" name="language">
 	</mat-form-field>
 
+	<input type="file" ng2FileSelect [uploader]="uploader"/>
+
+	<div *ngFor="let item of uploader.queue">
+		<button type="button" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+		<button type="button" (click)="item.remove()">Remove</button>
+	</div>
+
 	<button mat-raised-button (click)="submit()">Submit</button>
 </form>
 
