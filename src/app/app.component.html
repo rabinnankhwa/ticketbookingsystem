@@ -1,19 +1,31 @@
 <mat-toolbar color="primary" class="example-header">
+
     <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
 
     <span>CinemaBook</span>
     <span class="example-spacer"></span>
-    <button mat-button>Login</button>
+
+    <div *ngIf="authService.isLoggedIn">
+        {{ currentUser.name }}
+    </div>
+    <div *ngIf="!authService.isLoggedIn">
+        <button mat-button (click)="login()">Login</button>
+
+        <button mat-button (click)="register()">Register</button>
+    </div>
+
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
 
-    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav" fixedInViewport="false">
+    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
 
         <mat-list>
 
+
+            sidenave
             <a [routerLink]="[ '/home' ]">
                 <mat-list-item>Home</mat-list-item>
             </a>
@@ -21,7 +33,17 @@
             <a [routerLink]="[ '/movie-list' ]">
                 <mat-list-item>Movies</mat-list-item>
             </a>
-            
+
+
+            <a [routerLink]="[ '/login' ]">
+                <mat-list-item>login</mat-list-item>
+            </a>
+
+            <a [routerLink]="[ '/register' ]">
+                <mat-list-item>Movies</mat-list-item>
+            </a>
+
+
         </mat-list>
 
     </mat-sidenav>
