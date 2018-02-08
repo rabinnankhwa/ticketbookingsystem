@@ -9,7 +9,7 @@ import { MaterialModule } from './../shared/material.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-import { AuthService } from './services/auth.service';
+
 
 @NgModule({
 	imports: [
@@ -23,8 +23,7 @@ import { AuthService } from './services/auth.service';
 		LoginComponent,
 		RegisterComponent
 	],
-	providers:[
-		AuthService
+	providers: [
 	]
 })
 export class AuthModule { }

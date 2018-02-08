@@ -3,6 +3,7 @@ import { MovieService, Movie } from './../service/movie.service';
 
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from './../../../environments/environment';
+
 @Component({
 	selector: 'app-movie',
 	templateUrl: './movie.component.html',
@@ -10,8 +11,8 @@ import { environment } from './../../../environments/environment';
 })
 export class MovieComponent implements OnInit {
 
-
-	public uploader: FileUploader = new FileUploader({ url: environment.baseUrl + 'file-upload' });
+	public staticUrl: string = environment.staticUrl;
+	public uploader: FileUploader = new FileUploader({ url: environment.baseUrl + '/file/movie-poster' });
 
 
 	public movie: Movie = new Movie({});
@@ -43,7 +44,7 @@ export class MovieComponent implements OnInit {
 
 		this.uploader.onSuccessItem = (item: any, response: any, status: any, headers: any) => {
 			let res = JSON.parse(response);
-			this.movie.poster = res.path;
+			this.movie.poster = res.filename;
 			console.log("ImageUpload:uploaded:", item, status, response);
 
 		};

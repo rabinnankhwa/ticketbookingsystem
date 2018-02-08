@@ -14,6 +14,7 @@ export class AuthService {
 
 
 	private url: string;
+	redirectUrl:string;
 
 	constructor(
 		public http: Http,
