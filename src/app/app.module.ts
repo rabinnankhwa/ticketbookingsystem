@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 import { MovieModule } from './movie/movie.module';
 import { AuthModule } from './auth/auth.module';
+import { TheaterModule } from './theater/theater.module';
 
 import { AppRoutingModule } from './app.route.module';
 import { MaterialModule } from './shared/material.module';
@@ -25,13 +26,14 @@ import { AuthGuard } from './auth/services/guard.service';
 	imports: [
 		BrowserModule,
 		MaterialModule,
-		MovieModule,
 		BrowserAnimationsModule,
-		AuthModule,
-		AppRoutingModule,
 		FormsModule,
 		ReactiveFormsModule,
-		FlexLayoutModule
+		FlexLayoutModule,
+		MovieModule,
+		TheaterModule,
+		AuthModule,
+		AppRoutingModule
 	],
 	providers: [
 		BaseService,

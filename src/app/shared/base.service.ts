@@ -39,7 +39,4 @@ export class BaseService {
     getToken() {
         return localStorage.getItem('token');
     }
-
-
-
 } 
