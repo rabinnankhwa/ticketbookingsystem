@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,9 +11,8 @@ import { BaseService } from './../../shared/base.service';
 @Injectable()
 export class AuthService {
 
-
 	private url: string;
-	redirectUrl:string;
+	redirectUrl: string;
 
 	constructor(
 		public http: Http,
@@ -38,9 +36,7 @@ export class AuthService {
 
 
 	login(user: any): Observable<any> {
-
 		let body = JSON.stringify(user);
-
 		return this.http.post(this.url + 'login', body, this.baseService.getOptions())
 			.map(this.baseService.extractData)
 			.catch(this.baseService.handleError)
@@ -63,7 +59,7 @@ export class AuthService {
 	}
 
 	isLoggedIn() {
-		
+
 		if (localStorage.getItem('token')) {
 			return true;
 		} else {

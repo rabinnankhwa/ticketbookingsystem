@@ -29,9 +29,6 @@ export class LoginComponent implements OnInit {
 				this.router.navigate(['movie-list']);
 			}, e => {
 				console.log(e);			
-				// Create one service for error hadling 
-				// Implement snackbar ( angular material ) for  for error disply.
-				// Call that service and pass err.
 			});
 
 	}
