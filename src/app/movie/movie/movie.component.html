@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-around center">
-	<mat-card fxFlex="70">
+	<mat-card fxFlex="70" class="card">
 		<mat-card-title>Create Movies</mat-card-title>
 
 		<mat-card-content>
@@ -35,13 +35,16 @@
 
 <div fxLayout="row" fxLayoutAlign="space-around center">
 
-	<mat-card fxFlex="70">
+	<mat-card fxFlex="70" class="card">
 
 		<mat-card-title>Movies List</mat-card-title>
 
 		<mat-card-content>
 			<mat-list>
 				<mat-list-item *ngFor="let movie of movies; let i=index">
+
+					<img matListAvatar src="{{ staticUrl }}{{movie.poster}}" alt="...">
+					
 
 					<h3 matLine> {{movie.title}}
 

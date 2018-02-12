@@ -1,0 +1,21 @@
+<button mat-fab class="my-fab">
+	<mat-icon aria-label="add">add</mat-icon>
+</button>
+
+
+<mat-card>
+
+	<mat-card-title>My Theaters List</mat-card-title>
+
+	<mat-card-content>
+
+		<mat-list>
+			<mat-list-item *ngFor="let theater of theaters; let i=index">{{theater.title}}</mat-list-item>
+		</mat-list>
+
+	</mat-card-content>
+
+	<mat-card-actions>
+		Load More..
+	</mat-card-actions>
+</mat-card>
