@@ -8,11 +8,11 @@
         <span>ShowBook</span>
         <span class="example-spacer"></span>
 
-        <div *ngIf="authService.isLoggedIn">
-            {{ currentUser.name }}
+        <div *ngIf="isLogin">
+            {{ user.name }}
         </div>
 
-        <div *ngIf="!authService.isLoggedIn">
+        <div *ngIf="!isLogin">
             <button mat-button (click)="login()">Login</button>
             <button mat-button (click)="register()">Register</button>
         </div>
@@ -29,14 +29,14 @@
                     <span mat-line class="sidenav-margin">Dashboard </span>
                 </a>
             </mat-nav-list>
-            <mat-nav-list>
+            <mat-nav-list *ngIf="isSuperAdmin">
                 <a mat-list-item [routerLink]="['/movie-list']" routerLinkActive="active">
                     <mat-icon class="nav-icon" mat-list-icon>slideshow</mat-icon>
                     <span mat-line class="sidenav-margin">Movies </span>
                 </a>
             </mat-nav-list>
 
-            <mat-nav-list>
+            <mat-nav-list *ngIf="isTheaterAdmin">
                 <a mat-list-item [routerLink]="['/theaters']" routerLinkActive="active">
                     <mat-icon class="nav-icon" mat-list-icon>theaters</mat-icon>
                     <span mat-line class="sidenav-margin">Theater </span>
@@ -44,22 +44,22 @@
             </mat-nav-list>
 
             
-            <mat-nav-list>
+            <mat-nav-list *ngIf="!isLogin">
                 <a mat-list-item [routerLink]="['/login']" routerLinkActive="active">
                     <mat-icon class="nav-icon" mat-list-icon>account_box</mat-icon>
                     <span mat-line class="sidenav-margin">login </span>
                 </a>
             </mat-nav-list>
 
-            <mat-nav-list>
+            <mat-nav-list *ngIf="!isLogin">
                 <a mat-list-item [routerLink]="['/register']" routerLinkActive="active">
                     <mat-icon class="nav-icon" mat-list-icon>create</mat-icon>
                     <span mat-line class="sidenav-margin">Sign Up </span>
                 </a>
             </mat-nav-list>
 
-            <mat-nav-list>
-                <a mat-list-item [routerLink]="['/register']" routerLinkActive="active">
+            <mat-nav-list *ngIf="isLogin">
+                <a mat-list-item (click)="logout()" routerLinkActive="active">
                     <mat-icon class="nav-icon" mat-list-icon>exit_to_app</mat-icon>
                     <span mat-line class="sidenav-margin">Log Out</span>
                 </a>
