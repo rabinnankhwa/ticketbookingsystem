@@ -27,22 +27,22 @@ export class AutitoriumService {
 		this.url = this.baseService.url + 'autitorium';
 	}
 
-	create(theaterId:string,audi: Autitorium): Observable<Autitorium> {
+	create(theaterId: string, audi: Autitorium): Observable<Autitorium> {
 		let body = JSON.stringify(audi);
 		return this.http.post(this.url + '/' + theaterId, body, this.baseService.getOptions())
 			.map(this.baseService.extractData)
 			.catch(this.baseService.handleError);
 	}
 
-	update(audi: Autitorium): Observable<Autitorium> {
+	update(theaterId: string, audi: Autitorium): Observable<Autitorium> {
 		let body = JSON.stringify(audi);
-		return this.http.put(this.url + '/' + audi._id, body, this.baseService.getOptions())
+		return this.http.put(this.url + '/' + theaterId + '/' + audi._id, body, this.baseService.getOptions())
 			.map(this.baseService.extractData)
 			.catch(this.baseService.handleError);
 	}
 
-	remove(id: string): Observable<Autitorium> {
-		return this.http.delete(this.url + '/' + id, this.baseService.getOptions())
+	remove(theaterId: string, id: string): Observable<Autitorium> {
+		return this.http.delete(this.url + '/' + theaterId + '/' + id, this.baseService.getOptions())
 			.map(this.baseService.extractData)
 			.catch(this.baseService.handleError);
 	}

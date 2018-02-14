@@ -25,9 +25,27 @@ export class AuditoriumDialogComponent implements OnInit {
 
 	ngOnInit() {
 		this.theaterId = this.data.theater._id;
+		if (this.data.audi) {
+			this.audi = this.data.audi;
+		}
 	}
 
 	save() {
+		if (this.audi._id) {
+			this.update();
+		} else {
+			this.create();
+		}
+	}
+
+	update() {
+		this.autitoriumService.update(this.theaterId, this.audi)
+			.subscribe(audi => {
+				this.dialogRef.close(audi);
+			})
+	}
+
+	create() {
 		this.autitoriumService.create(this.theaterId, this.audi)
 			.subscribe(audi => {
 				this.dialogRef.close(audi);

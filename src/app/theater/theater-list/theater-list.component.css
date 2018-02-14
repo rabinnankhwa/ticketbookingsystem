@@ -2,8 +2,5 @@
     position: fixed;
     bottom: 38px;
     right: 49px;
-}
-
-.theater-card{
-    width: 400px;
+    z-index: 1;
 }

@@ -50,9 +50,9 @@ export class TheaterDialogComponent implements OnInit {
 
 	add() {
 		this.theaterService.create(this.theater)
-			.subscribe(theater => {
+			.subscribe(audi => {
 				this.saving = false;
-				this.dialogRef.close(theater);
+				this.dialogRef.close(audi);
 			}, e => {
 				this.saving = false;
 				console.log(e);

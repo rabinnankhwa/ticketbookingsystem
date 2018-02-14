@@ -3,59 +3,62 @@
 </button>
 
 
+<div fxLayout="row" fxLayoutAlign="center start">
 
-<p>My Theaters List</p>
+	<div fxFlex="80">
+		<h1>My Theaters List</h1>
 
-<div *ngIf="loading"><p>Loading....</p></div>
-
-
-<mat-card *ngFor="let theater of theaters; let i=index" class="theater-card">
-
-	<mat-card-title>{{theater.title}}
-		<mat-menu #appMenu="matMenu">
-			<button mat-menu-item (click)="udpate(theater,i)"> Update </button>
-			<button mat-menu-item (click)="remove(theater._id,i)"> Remove </button>
-		</mat-menu>
-
-		<button mat-icon-button [matMenuTriggerFor]="appMenu">
-			<mat-icon>more_vert</mat-icon>
-		</button>
-	</mat-card-title>
+		<div *ngIf="loading">
+			<p>Loading....</p>
+		</div>
 
 
+		<mat-card *ngFor="let theater of theaters; let i=index" class="theater-card">
 
-	<mat-card-content>
+			<mat-card-title>{{theater.title}}
+				<mat-menu #appMenu="matMenu">
+					<button mat-menu-item (click)="udpate(theater,i)"> Update </button>
+					<button mat-menu-item (click)="remove(theater._id,i)"> Remove </button>
+				</mat-menu>
 
-		<p>{{theater.address}}</p>  
+				<button mat-icon-button [matMenuTriggerFor]="appMenu">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+			</mat-card-title>
 
-		<h3>Audotirums</h3>
-		<button mat-raised-button color="primary" (click)="addAuditorium(theater)">Add Auditorium </button>
+			<mat-card-content>
+
+				<p>{{theater.address}}</p>
+
+				<h3>Audotirums</h3>
+
+				<button mat-raised-button color="primary" (click)="addAuditorium(theater)">Add Auditorium </button>
+
+				<mat-list *ngIf="!loading">
+					<mat-list-item *ngFor="let audi of theater.auditoriums; let i=index">
+
+						<h3 matLine>
+							{{audi.title}}
+							<mat-menu #appMenu="matMenu">
+								<button mat-menu-item (click)="udpateAudi(theater,i,audi)"> Update </button>
+								<button mat-menu-item (click)="removeAudi(theater,i,audi)"> Remove </button>
+							</mat-menu>
+
+							<button mat-icon-button [matMenuTriggerFor]="appMenu">
+								<mat-icon>more_vert</mat-icon>
+							</button>
+						</h3>
+
+						<p matLine>
+							{{audi.size}}
+						</p>
+					</mat-list-item>
+				</mat-list>
+
+			</mat-card-content>
+
+		</mat-card>
+	</div>
 
 
-		<mat-list *ngIf="!loading">
-			<mat-list-item *ngFor="let audi of theater.auditoriums; let i=index">
-
-				<h3 matLine>
-					{{audi.title}}
-					<mat-menu #appMenu="matMenu">
-						<button mat-menu-item (click)="udpate(theater,i)"> Update </button>
-						<button mat-menu-item (click)="remove(theater._id,i)"> Remove </button>
-					</mat-menu>
-			
-					<button mat-icon-button [matMenuTriggerFor]="appMenu">
-						<mat-icon>more_vert</mat-icon>
-					</button>
-				</h3>
-
-				<p matLine>
-					{{audi.size}}
-				</p>
-			</mat-list-item>
-		</mat-list>
-
-	</mat-card-content>
-
-	<mat-card-actions>
-		<!-- Load More.. -->
-	</mat-card-actions>
-</mat-card>
+</div>
