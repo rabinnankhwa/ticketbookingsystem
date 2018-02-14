@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
 		this.authService.login(this.user)
 			.subscribe(data => {
 				this.authService.setUser(data);
-				this.router.navigate(['movie-list']);
+				this.authService.publishUserDataChange();
+				this.router.navigate([this.authService.redirectUrl]);
 			}, e => {
 				console.log(e);			
 			});
