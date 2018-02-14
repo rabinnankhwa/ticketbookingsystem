@@ -9,8 +9,11 @@ import { TheaterRoutingModule } from './theater.routing.module';
 
 import { TheaterListComponent } from './theater-list/theater-list.component';
 import { TheaterDialogComponent } from './theater-dialog/theater-dialog.component';
+import { AuditoriumDialogComponent } from './auditorium-dialog/auditorium-dialog.component';
 
-import { TheaterService } from './serices/theater.service';
+import { TheaterService } from './services/theater.service';
+import { AutitoriumService } from './services/autitorium.service';
+
 
 @NgModule({
 	imports: [
@@ -21,12 +24,18 @@ import { TheaterService } from './serices/theater.service';
 		FormsModule,
 		TheaterRoutingModule
 	],
+	entryComponents:[
+		TheaterDialogComponent,
+		AuditoriumDialogComponent
+	],
 	declarations: [
 		TheaterListComponent,
-		TheaterDialogComponent
+		TheaterDialogComponent,
+		AuditoriumDialogComponent
 	],
 	providers: [
-		TheaterService
+		TheaterService,
+		AutitoriumService
 	]
 })
 export class TheaterModule { }
