@@ -29,7 +29,7 @@ export class User {
 export class AuthService {
 
 	private url: string;
-	redirectUrl: string;
+	redirectUrl: string = 'home';
 
 	// Observable string sources
 	private userDataChanged = new Subject<boolean>();

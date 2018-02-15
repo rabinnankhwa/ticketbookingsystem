@@ -8,11 +8,13 @@ export class Theater {
 	_id: string;
 	title: string;
 	address: string;
+	size: number;
 
 	constructor(options: any) {
 		this._id = options._id;
 		this.title = options.title;
 		this.address = options.address;
+		this.size = options.size;
 	}
 }
 @Injectable()
@@ -36,6 +38,19 @@ export class TheaterService {
 	create(theater: Theater): Observable<Theater> {
 		let body = JSON.stringify(theater);
 		return this.http.post(this.url, body, this.baseService.getOptions())
+			.map(this.baseService.extractData)
+			.catch(this.baseService.handleError);
+	}
+
+	update(theater: Theater): Observable<Theater> {
+		let body = JSON.stringify(theater);
+		return this.http.put(this.url + '/' + theater._id, body, this.baseService.getOptions())
+			.map(this.baseService.extractData)
+			.catch(this.baseService.handleError);
+	}
+
+	remove(id: string): Observable<Theater> {
+		return this.http.delete(this.url + '/' + id, this.baseService.getOptions())
 			.map(this.baseService.extractData)
 			.catch(this.baseService.handleError);
 	}
