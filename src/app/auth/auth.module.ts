@@ -8,8 +8,8 @@ import { MaterialModule } from './../shared/material.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
-
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @NgModule({
 	imports: [
@@ -21,7 +21,12 @@ import { RegisterComponent } from './register/register.component';
 	],
 	declarations: [
 		LoginComponent,
-		RegisterComponent
+		RegisterComponent,
+		UserDialogComponent,
+		UserListComponent
+	],
+	entryComponents: [
+		UserDialogComponent
 	],
 	providers: [
 	]

@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<pre>
+	{{
+		show|json
+	}}
+</pre>
+
+<mat-dialog-content>
+
+	<form class="form">
+		<mat-form-field class="full-width">
+			<input matInput placeholder="title" [(ngModel)]="show.title" name="title">
+		</mat-form-field>
+
+		<mat-form-field class="full-width">
+			<input matInput placeholder="Date" [(ngModel)]="show.date" name="date">
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select placeholder="Select Movie" (change)="movieChange($event)" [(ngModel)]="show.movie" name="movie">
+				<mat-option  *ngFor="let movie of movies" [value]="movie._id">
+					{{movie.title}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select placeholder="Select Theater" [(ngModel)]="show.theater.theater" name="theater">
+				<mat-option  *ngFor="let theater of theaters" [value]="theater._id">
+					{{theater.title}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	
+
+	</form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button mat-button mat-dialog-close>Cancel</button>
+	<button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

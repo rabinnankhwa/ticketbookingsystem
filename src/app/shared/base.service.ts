@@ -39,4 +39,15 @@ export class BaseService {
     getToken() {
         return localStorage.getItem('token');
     }
+
+
+    getQueryString(query) {
+		let queryString = '?';
+		for (const key in query) {
+			if (key) {
+				queryString += key + '=' + query[key] + '&';
+			}
+		}
+		return queryString;
+	}
 } 

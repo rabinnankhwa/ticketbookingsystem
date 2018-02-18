@@ -1,0 +1,64 @@
+<button mat-fab class="my-fab" (click)="add()">
+    <mat-icon aria-label="add">add</mat-icon>
+</button>
+
+
+<div fxLayout="row" fxLayoutAlign="center start">
+
+    <div fxFlex="80">
+        <h1>Shows</h1>
+
+        <div *ngIf="loading">
+            <p>Loading....</p>
+        </div>
+
+
+        <mat-card *ngFor="let show of shows; let i=index" class="show-card">
+
+            <mat-card-title>{{show.title}}
+                <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item (click)="udpate(show,i)"> Update </button>
+                    <button mat-menu-item (click)="remove(show._id,i)"> Remove </button>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </mat-card-title>
+
+            <mat-card-content>
+
+                <p>{{show.address}}</p>
+
+                <h3>Seats</h3>
+
+                <button mat-raised-button color="primary" (click)="addSeat(show)">Add Seats </button>
+
+                <mat-list *ngIf="!loading">
+                    <mat-list-item *ngFor="let seat of show.seats; let i=index">
+
+                        <h3 matLine>
+                            {{seat.name}}
+                            <mat-menu #appMenu="matMenu">
+                                <button mat-menu-item (click)="udpateShow(show,i,seat)"> Update </button>
+                                <button mat-menu-item (click)="removeShow(show,i,seat)"> Remove </button>
+                            </mat-menu>
+
+                            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </h3>
+
+                        <p matLine>
+                            {{seat.price}}
+                        </p>
+                    </mat-list-item>
+                </mat-list>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+
+
+</div>

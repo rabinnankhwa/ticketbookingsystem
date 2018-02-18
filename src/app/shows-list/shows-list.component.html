@@ -1,0 +1,15 @@
+<mat-card *ngFor="let show of shows; let i=index">
+
+	<mat-card-title>{{ show.title }} - {{ show.date}}</mat-card-title>
+
+	<mat-card-content>
+
+		<p *ngFor="let seat of show.seats; let i=index">
+			<mat-checkbox class="example-margin" [(ngModel)]="seat.status">{{ seat.name }}</mat-checkbox>
+		</p>
+
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-button>Ok</button>
+	</mat-card-actions>
+</mat-card>
