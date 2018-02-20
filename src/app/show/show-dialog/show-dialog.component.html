@@ -18,7 +18,7 @@
 		</mat-form-field>
 
 		<mat-form-field>
-			<mat-select placeholder="Select Movie" (change)="movieChange($event)" [(ngModel)]="show.movie" name="movie">
+			<mat-select placeholder="Select Movie" [(ngModel)]="show.movie" name="movie">
 				<mat-option  *ngFor="let movie of movies" [value]="movie._id">
 					{{movie.title}}
 				</mat-option>
