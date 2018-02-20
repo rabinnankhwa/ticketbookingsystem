@@ -35,6 +35,14 @@ export class TheaterService {
 			.catch(this.baseService.handleError);
 	}
 
+	myList(): Observable<Theater[]> {
+		return this.http.get(this.url+'/my-theater', this.baseService.getOptions())
+			.map(this.baseService.extractData)
+			.catch(this.baseService.handleError);
+	}
+
+	
+
 	create(theater: Theater): Observable<Theater> {
 		let body = JSON.stringify(theater);
 		return this.http.post(this.url, body, this.baseService.getOptions())
