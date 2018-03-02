@@ -29,7 +29,7 @@ export class TheaterListComponent implements OnInit {
 
 	getTheaters() {
 		this.loading = true;
-		this.theaterService.list()
+		this.theaterService.myList()
 			.subscribe(theaters => {
 				this.theaters = theaters;
 				this.loading = false;

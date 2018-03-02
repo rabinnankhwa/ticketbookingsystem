@@ -6,8 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ShowsListComponent } from './shows-list/shows-list.component';
 
 import { MovieModule } from './movie/movie.module';
+import { ShowModule } from './show/show.module';
+
 import { AuthModule } from './auth/auth.module';
 import { TheaterModule } from './theater/theater.module';
 
@@ -16,12 +19,14 @@ import { MaterialModule } from './shared/material.module';
 
 import { BaseService } from './shared/base.service';
 import { AuthService } from './auth/services/auth.service';
+import { UserService } from './auth/services/user.service';
 import { AuthGuard } from './auth/services/guard.service';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomeComponent
+		HomeComponent,
+		ShowsListComponent
 	],
 	imports: [
 		BrowserModule,
@@ -31,6 +36,7 @@ import { AuthGuard } from './auth/services/guard.service';
 		ReactiveFormsModule,
 		FlexLayoutModule,
 		MovieModule,
+		ShowModule,
 		TheaterModule,
 		AuthModule,
 		AppRoutingModule
@@ -38,7 +44,8 @@ import { AuthGuard } from './auth/services/guard.service';
 	providers: [
 		BaseService,
 		AuthGuard,
-		AuthService
+		AuthService,
+		UserService
 	],
 	bootstrap: [AppComponent]
 })

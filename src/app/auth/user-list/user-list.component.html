@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+
+	<mat-card fxFlex="70" class="card">
+
+		<mat-card-title>Users List</mat-card-title>
+
+		<mat-card-content>
+			<mat-list>
+				<mat-list-item *ngFor="let user of users; let i=index">
+
+					<h3 matLine> {{user.name}}
+
+						<mat-menu #appMenu="matMenu">
+							<button mat-menu-item (click)="update(user,i)"> Update </button>
+						</mat-menu>
+
+						<button mat-icon-button [matMenuTriggerFor]="appMenu">
+							<mat-icon>more_vert</mat-icon>
+						</button>
+
+					</h3>
+
+					<p matLine>
+						<span> {{user.email}} </span>
+						<span class="demo-2">
+							<!-- // 1- User , 2-TheaterAdmin 3-Super Admin. -->
+							<mat-chip-list>
+								<mat-chip color="warn" selected="true" *ngIf="user.userType==3">Super Admin</mat-chip>
+								<mat-chip color="accent" selected="true " *ngIf="user.userType==2">Theater Admin</mat-chip>
+								<mat-chip color="primary" selected="true" *ngIf="user.userType==1">User</mat-chip>
+							</mat-chip-list>
+						</span>
+					</p>
+
+				</mat-list-item>
+			</mat-list>
+		</mat-card-content>
+
+	</mat-card>
+</div>
